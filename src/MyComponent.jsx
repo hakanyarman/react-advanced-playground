@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react"
 import AppContext from "./contexts/AppContext";
 
-
 const MyComponent = () => {
     useEffect(() => {
         console.log("My component render/rerender edildi");

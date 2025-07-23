@@ -4,14 +4,14 @@ import Button from "./Button"
 
 
 const SecondComponent = () => {
-    const { username, setUsernameState } = useContext(AppContext)
+    const { username } = useContext(AppContext)
     return (
         <div style={{ border: "2px solid black", marginTop: 20, padding: 40 }}>
             <div>hello from second component</div>
             <div>
                 username : {username}
             </div>
-            <Button onClick={() => { setUsernameState("hakan") }}>alt component'e setUsername fonksiyonunu da paylaştık global statei değiştirmek için tıkla</Button>
+            <Button>sabit değerle değiştir global statei</Button>
         </div>
     )
 }

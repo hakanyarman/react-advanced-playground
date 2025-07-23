@@ -6,12 +6,13 @@ const ButtonStyle = {
     "width": "300px"
 }
 
-
-
 const Button = ({ children }) => {
-    const { username } = useContext(AppContext)
+    const { username, setUsernameState } = useContext(AppContext)
+    const handleClick = () => {
+        setUsernameState("sabit değer")
+    }
     return (
-        <button style={ButtonStyle}>
+        <button style={ButtonStyle} onClick={handleClick}>
             {children}
             {username}
         </button>

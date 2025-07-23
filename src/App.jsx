@@ -1,19 +1,17 @@
-import { lazy, Suspense, useContext, useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import AppContext from './contexts/AppContext'
 import useSum from './utils/useSum'
+
 
 const MyComponent = lazy(() => import('./MyComponent'))
 const SecondComponent = lazy(() => import('./SecondComponent'))
 
 function App() {
-
   const [isShow, setIsShow] = useState(false)
-  const { username } = useContext(AppContext)
 
-  const [usernameState, setUsernameState] = useState(username)
-
+  const [usernameState, setUsernameState] = useState("hakan123")
   const { result } = useSum(5, 4)
-  console.log(result)
+
   return (
     <AppContext.Provider value={{ username: usernameState, setUsernameState }}>
       {/* setUsernameState fonksiyonunu da alt compentlere provide ettik */}
