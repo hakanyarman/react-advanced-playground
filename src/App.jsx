@@ -9,6 +9,7 @@ const SecondComponent = lazy(() => import("./SecondComponent"));
 function App() {
   const [isShow, setIsShow] = useState(false);
   const inputRef = useRef();
+  const bottomElementRef = useRef();
 
   const [usernameState, setUsernameState] = useState("hakan123");
   const { result } = useSum(5, 4);
@@ -16,6 +17,13 @@ function App() {
   // component ilk render edildiğinde input'a focuslasın:
   useEffect(() => {
     inputRef.current.focus();
+  }, []);
+
+  // component ilk render edildikten 1 saniye sonra en alttaki elemente scroll yap
+  useEffect(() => {
+    setTimeout(() => {
+      bottomElementRef.current.scrollIntoView({ behavior: "smooth" });
+    }, 1000);
   }, []);
 
   return (
@@ -42,6 +50,9 @@ function App() {
       <div>
         custom hook'dan gelen sonuç: (useSum)
         <span>{result}</span>
+      </div>
+      <div style={{ marginTop: "900px" }} ref={bottomElementRef}>
+        en alttaki div
       </div>
     </AppContext.Provider>
   );
